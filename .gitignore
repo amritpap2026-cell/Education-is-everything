@@ -8,3 +8,6 @@ client_secret.json
 youtube-token.json
 venv/
 .env
+.env
+client_secret.json
+youtube-token.json
