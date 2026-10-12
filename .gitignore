@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.env
+assets/temp/*
+output/*
+topics.db
+client_secret.json
+youtube-token.json
+venv/
+.env
