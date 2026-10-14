@@ -120,14 +120,14 @@ RULES:
 1. Every scene must have precise MM:SS start and end times.
 2. visual_type MUST be one of: STOCK_VIDEO, AI_IMAGE, AI_VIDEO_LOOP, MOTION_GRAPHIC.
 3. If STOCK_VIDEO: source is "Pexels" or "Pixabay", prompt_or_query is search term.
-4. If AI_IMAGE: source is "Pollinations", prompt_or_query is image prompt.
+4. If AI_IMAGE: source is "Cloudflare", prompt_or_query is a detailed image generation prompt.
 5. If AI_VIDEO_LOOP: source is "Library".
 6. motion is "zoom_in", "zoom_out", or "none".
 7. Timeline MUST cover the ENTIRE script from 00:00 to end.
 8. Create at least 6-8 scenes for a 2-minute video.
 """
 
-    result = _call_groq(prompt) or _call_gemini(prompt)
+    result = _call_gemini(prompt) or _call_groq(prompt)
     if not isinstance(result, dict) or "timeline" not in result:
         print("   ALL LLMs failed, using fallback.")
         return _fallback(brief, minutes)
