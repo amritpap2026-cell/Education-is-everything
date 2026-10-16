@@ -122,7 +122,9 @@ RULES:
 3. If STOCK_VIDEO: source is "Pexels" or "Pixabay", prompt_or_query is search term.
 4. If AI_IMAGE: source is "Cloudflare", prompt_or_query is a detailed image generation prompt.
 5. If AI_VIDEO_LOOP: source is "Library".
-6. motion is "zoom_in", "zoom_out", or "none".
+6. motion is REQUIRED for AI_IMAGE and MOTION_GRAPHIC scenes.
+   - Alternate between "zoom_in" and "zoom_out" for variety.
+   - Use "none" ONLY for STOCK_VIDEO and AI_VIDEO_LOOP scenes (motion is ignored for those).
 7. Timeline MUST cover the ENTIRE script from 00:00 to end.
 8. Create at least 6-8 scenes for a 2-minute video.
 """
