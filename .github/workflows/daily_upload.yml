@@ -2,15 +2,14 @@ name: Daily AI Video Upload
 
 on:
   schedule:
-    # Runs twice a day: 4:00 AM and 4:00 PM UTC
     - cron: '0 4,16 * * *'
-  workflow_dispatch: # Allows you to run it manually by clicking a button
+  workflow_dispatch:
 
 jobs:
   build-and-upload:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Needed to commit the updated queue back to the repo
+      contents: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
