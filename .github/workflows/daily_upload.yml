@@ -34,12 +34,34 @@ jobs:
           ENV_FILE: ${{ secrets.ENV_FILE }}
           CLIENT_SECRET_JSON: ${{ secrets.CLIENT_SECRET_JSON }}
           YOUTUBE_TOKEN_JSON: ${{ secrets.YOUTUBE_TOKEN_JSON }}
-          PLAYLISTS_JSON: ${{ secrets.PLAYLISTS_JSON }}
         run: |
           printf "%s" "$ENV_FILE" > .env
           printf "%s" "$CLIENT_SECRET_JSON" > client_secret.json
           printf "%s" "$YOUTUBE_TOKEN_JSON" > youtube-token.json
-          printf "%s" "$PLAYLISTS_JSON" > playlists.json
+          
+          # Automatically generate playlists.json
+          cat > playlists.json << 'PLAYLISTS_EOF'
+          {
+            "English": {
+              "playlist_id": "PLXtXoI8JqBcI",
+              "privacy": "public",
+              "category_id": "27",
+              "default_language": "en"
+            },
+            "Hindi": {
+              "playlist_id": "PLUs3JAt3IsQI",
+              "privacy": "public",
+              "category_id": "27",
+              "default_language": "hi"
+            },
+            "Nepali": {
+              "playlist_id": "PLYr-1hw4Pgbo",
+              "privacy": "public",
+              "category_id": "27",
+              "default_language": "ne"
+            }
+          }
+          PLAYLISTS_EOF
 
       - name: Run Scheduler
         run: python scheduler.py
