@@ -1,0 +1,49 @@
+name: Daily AI Video Upload
+
+on:
+  schedule:
+    # Runs twice a day: 4:00 AM and 4:00 PM UTC
+    - cron: '0 4,16 * * *'
+  workflow_dispatch: # Allows you to run it manually by clicking a button
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Needed to commit the updated queue back to the repo
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install FFmpeg and Fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-dejavu
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Recreate Secret Files
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > .env
+          echo "${{ secrets.CLIENT_SECRET_JSON }}" > client_secret.json
+          echo "${{ secrets.YOUTUBE_TOKEN_JSON }}" > youtube-token.json
+          echo "${{ secrets.PLAYLISTS_JSON }}" > playlists.json
+
+      - name: Run Scheduler
+        run: python scheduler.py
+
+      - name: Commit and Push Queue Update
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add topics_queue.json
+          git commit -m "Mark video as done [skip ci]" || echo "No changes to commit"
+          git push
