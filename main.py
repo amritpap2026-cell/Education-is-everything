@@ -25,43 +25,32 @@ def main():
 
     print("1. Researching topic...")
     dossier = research(topic, args.language, "General public")
-    print(f"   Research complete.")
-
+    
     print("\n2. Writing script and generating timeline...")
-    package = write_script(dossier, args.minutes, args.language) 
+    package = write_script(dossier, args.minutes, args.language)
     timeline = package.get("timeline", [])
     full_script = package.get("full_script", "")
-
+    
     if not timeline:
         print("ERROR: No timeline generated.")
         sys.exit(1)
 
-    print(f"   Title: {package.get('title', topic)}")
-    print(f"   Scenes: {len(timeline)}")
-
     Path("output").mkdir(exist_ok=True)
     with open("output/package.json", "w", encoding="utf-8") as f:
         json.dump(package, f, ensure_ascii=False, indent=2)
-    print("   Package saved to output/package.json")
 
     print("\n3. Generating voiceover and subtitles...")
     audio_path, ass_path = generate_voiceover(full_script, args.language)
-    print(f"   Audio: {audio_path} ({os.path.getsize(audio_path)} bytes)")
-    print(f"   ASS: {ass_path} ({os.path.getsize(ass_path)} bytes)")
-
+    
     print("\n4. Downloading assets...")
     for scene in timeline:
         asset_path = fetch_asset_for_scene(scene)
         scene["downloaded_asset"] = asset_path
 
-    successes = sum(1 for s in timeline if s.get("downloaded_asset"))
-    print(f"\n   Assets downloaded: {successes}/{len(timeline)}")
-
     print("\n5. Rendering final video...")
     output_video = "output/final_video.mp4"
     render_final_video(timeline, audio_path, ass_path, output_video)
-    print(f"   ✓ Video saved: {output_video}")
-
+    
     if args.skip_upload:
         print("\n=== Rendering complete (skip upload) ===")
         return
