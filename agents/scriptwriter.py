@@ -73,11 +73,10 @@ You MUST output ONLY valid JSON with this exact structure:
 CRITICAL RULES:
 1. The full_script, title, description, and all narration MUST be written entirely in {language}.
 2. Create EXACTLY 50 scenes (roughly 6 seconds per scene).
-3. Use "visual_type": "AI_VIDEO_LOOP" for EXACTLY 7 scenes. The prompt_or_query MUST describe cinematic motion.
-4. Use "visual_type": "AI_IMAGE" for EXACTLY 25 scenes.
-5. For ALL 25 AI_IMAGE scenes, you MUST alternate "motion": "zoom_in" and "motion": "zoom_out".
-6. Use "visual_type": "STOCK_VIDEO" for the remaining 18 scenes. Set source to "Pexels" or "Pixabay", and "motion": "none".
-7. visual_type MUST be one of: STOCK_VIDEO, AI_IMAGE, AI_VIDEO_LOOP.
+3. Use "visual_type": "AI_IMAGE" for EXACTLY 32 scenes.
+4. For ALL 32 AI_IMAGE scenes, you MUST alternate "motion": "zoom_in" and "motion": "zoom_out".
+5. Use "visual_type": "STOCK_VIDEO" for the remaining 18 scenes. Set source to "Pexels" or "Pixabay", and "motion": "none".
+6. visual_type MUST be one of: STOCK_VIDEO, AI_IMAGE.
 """
 
     result = _call_gemini(prompt) or _call_groq(prompt)
