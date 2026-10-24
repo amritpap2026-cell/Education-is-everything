@@ -1,91 +1,43 @@
 """Automatically generates new topics when the queue is running low."""
-import json
-import os
-import urllib.parse
-import urllib.request
+import json, os, urllib.parse, urllib.request
 from pathlib import Path
 from dotenv import load_dotenv
-
 load_dotenv()
 from config1 import GEMINI_API_URL, GEMINI_MODELS, get_gemini_keys
 
 QUEUE_FILE = Path("topics_queue.json")
-MIN_REMAINING = 10  # Generate new topics if fewer than 10 are left
-TOPICS_TO_GENERATE = 60  # 20 English, 20 Hindi, 20 Nepali
+MIN_REMAINING = 10
+TOPICS_TO_GENERATE = 60
 
 def generate_new_topics():
-    if not QUEUE_FILE.exists():
-        print("No queue file found. Creating a new one...")
-        existing_queue = []
-    else:
-        existing_queue = json.loads(QUEUE_FILE.read_text(encoding="utf-8"))
-
-    # Count how many are not done yet
+    existing_queue = json.loads(QUEUE_FILE.read_text(encoding="utf-8")) if QUEUE_FILE.exists() else []
     remaining = sum(1 for item in existing_queue if not item.get("done", False))
     print(f"Current queue status: {remaining} topics remaining.")
-
     if remaining >= MIN_REMAINING:
-        print("Queue is healthy. No need to generate new topics yet.")
-        return
-
+        print("Queue is healthy."); return
     print(f"Queue is low! Generating {TOPICS_TO_GENERATE} new topics...")
-
     existing_topics = [item["topic"] for item in existing_queue]
-    existing_topics_str = "\n".join(existing_topics[-100:]) 
-
-    prompt = f"""You are a YouTube content strategist for an educational channel.
-Generate exactly {TOPICS_TO_GENERATE} highly engaging, unique topics for 5-minute videos.
-The topics should cover science, history, technology, psychology, and space.
-
-I need EXACTLY {TOPICS_TO_GENERATE // 3} topics in English, {TOPICS_TO_GENERATE // 3} in Hindi, and {TOPICS_TO_GENERATE // 3} in Nepali.
-They MUST be in a perfect rotation: English, Hindi, Nepali, English, Hindi, Nepali...
-
+    existing_topics_str = "\n".join(existing_topics[-100:])
+    prompt = f"""Generate exactly {TOPICS_TO_GENERATE} highly engaging, unique topics for 5-minute videos.
+Rotate: English, Hindi, Nepali. 
 DO NOT use any of these existing topics:
 {existing_topics_str}
-
-Return ONLY a valid JSON array with this exact structure:
-[
-  {{ "topic": "Topic in English", "minutes": 5, "language": "English", "done": false }},
-  {{ "topic": "Topic in Hindi", "minutes": 5, "language": "Hindi", "done": false }},
-  {{ "topic": "Topic in Nepali", "minutes": 5, "language": "Nepali", "done": false }}
-]
-"""
-
+Return ONLY a valid JSON array: [ {{"topic": "...", "minutes": 5, "language": "English", "done": false}}, ... ]"""
     keys = get_gemini_keys()
-    if not keys:
-        print("No Gemini keys found. Cannot generate topics.")
-        return
-
-    body = {
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {"temperature": 0.8, "responseMimeType": "application/json"}
-    }
-
+    if not keys: return
+    body = {"contents": [{"parts": [{"text": prompt}]}], "generationConfig": {"temperature": 0.8, "responseMimeType": "application/json"}}
     for key in keys:
         for model in GEMINI_MODELS:
             try:
                 url = GEMINI_API_URL.format(model=model, key=urllib.parse.quote(key, safe=""))
-                req = urllib.request.Request(
-                    url, data=json.dumps(body).encode(),
-                    headers={"Content-Type": "application/json", "User-Agent": "QueueGen/1.0"},
-                    method="POST"
-                )
+                req = urllib.request.Request(url, data=json.dumps(body).encode(), headers={"Content-Type": "application/json", "User-Agent": "QueueGen/1.0"}, method="POST")
                 with urllib.request.urlopen(req, timeout=90) as response:
                     data = json.loads(response.read().decode())
-                
                 new_topics = json.loads(data["candidates"][0]["content"]["parts"][0]["text"])
-                
                 if isinstance(new_topics, list) and len(new_topics) > 0:
                     print(f"Successfully generated {len(new_topics)} new topics!")
                     existing_queue.extend(new_topics)
                     QUEUE_FILE.write_text(json.dumps(existing_queue, ensure_ascii=False, indent=2), encoding="utf-8")
-                    print("Queue updated and saved.")
                     return
-            except Exception as e:
-                print(f"Gemini {model} failed: {str(e)[:100]}")
-                continue
-
-    print("Failed to generate new topics from any API key.")
-
-if __name__ == "__main__":
-    generate_new_topics()
+            except Exception: continue
+if __name__ == "__main__": generate_new_topics()

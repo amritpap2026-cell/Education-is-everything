@@ -1,10 +1,8 @@
 """Main orchestrator for the 100% free automated video pipeline."""
 import argparse, json, os, sys
 from pathlib import Path
-
 from dotenv import load_dotenv
 load_dotenv()
-
 from agents.researcher import research
 from agents.scriptwriter import write_script
 from modules.tts import generate_voiceover
@@ -12,33 +10,25 @@ from modules.assets import fetch_asset_for_scene
 from modules.renderer import render_final_video
 from modules.uploader import upload
 
-
 def main():
     parser = argparse.ArgumentParser(description="Automated YouTube Video Pipeline")
     parser.add_argument("--topic", type=str, required=True)
-    parser.add_argument("--minutes", type=int, default=3)
+    parser.add_argument("--minutes", type=int, default=5)
     parser.add_argument("--language", type=str, default="English")
     parser.add_argument("--privacy", type=str, default="private")
     parser.add_argument("--skip-upload", action="store_true")
     args = parser.parse_args()
 
     topic = args.topic
-    print(f"\n=== Starting Pipeline for: {topic} ===\n")
+    print(f"\n=== Starting Pipeline for: {topic} ===")
+    print(f"=== Language: {args.language} ===\n")
 
-    # Verify API keys
-    print("0. Checking API keys...")
-    for key in ["GROQ_API_KEY", "GEMINI_API_KEY", "PEXELS_API_KEY", "PIXABAY_API_KEY"]:
-        val = os.getenv(key)
-        print(f"   {key}: {'✓ set' if val else '✗ MISSING'}")
-
-    # 1. Research
-    print("\n1. Researching topic...")
+    print("1. Researching topic...")
     dossier = research(topic, args.language, "General public")
     print(f"   Research complete.")
 
-    # 2. Script & Timeline
     print("\n2. Writing script and generating timeline...")
-    package = write_script(dossier, args.minutes)
+    package = write_script(dossier, args.minutes, args.language) 
     timeline = package.get("timeline", [])
     full_script = package.get("full_script", "")
 
@@ -48,40 +38,34 @@ def main():
 
     print(f"   Title: {package.get('title', topic)}")
     print(f"   Scenes: {len(timeline)}")
-    print(f"   Script length: {len(full_script)} chars")
 
     Path("output").mkdir(exist_ok=True)
     with open("output/package.json", "w", encoding="utf-8") as f:
         json.dump(package, f, ensure_ascii=False, indent=2)
     print("   Package saved to output/package.json")
 
-    # 3. Voiceover
     print("\n3. Generating voiceover and subtitles...")
-    audio_path, srt_path = generate_voiceover(full_script, args.language)
+    audio_path, ass_path = generate_voiceover(full_script, args.language)
     print(f"   Audio: {audio_path} ({os.path.getsize(audio_path)} bytes)")
-    print(f"   SRT: {srt_path} ({os.path.getsize(srt_path)} bytes)")
+    print(f"   ASS: {ass_path} ({os.path.getsize(ass_path)} bytes)")
 
-    # 4. Fetch Assets
     print("\n4. Downloading assets...")
     for scene in timeline:
         asset_path = fetch_asset_for_scene(scene)
         scene["downloaded_asset"] = asset_path
 
-    # Count successes
     successes = sum(1 for s in timeline if s.get("downloaded_asset"))
     print(f"\n   Assets downloaded: {successes}/{len(timeline)}")
 
-    # 5. Render
     print("\n5. Rendering final video...")
     output_video = "output/final_video.mp4"
-    render_final_video(timeline, audio_path, srt_path, output_video)
+    render_final_video(timeline, audio_path, ass_path, output_video)
     print(f"   ✓ Video saved: {output_video}")
 
     if args.skip_upload:
         print("\n=== Rendering complete (skip upload) ===")
         return
 
-    # 6. Upload
     print("\n6. Uploading to YouTube...")
     try:
         result = upload(
@@ -89,13 +73,14 @@ def main():
             title=package.get("title", topic),
             description=package.get("description", ""),
             tags=package.get("tags", []),
-            privacy=args.privacy
+            language=args.language,
+            privacy=args.privacy if args.privacy != "private" else None,
         )
         print(f"\n=== SUCCESS! {result['url']} ===")
     except Exception as e:
         print(f"\nUpload failed: {e}")
         print(f"Video still available at: {output_video}")
-
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

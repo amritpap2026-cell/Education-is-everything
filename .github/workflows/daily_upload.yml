@@ -39,7 +39,6 @@ jobs:
           printf "%s" "$ENV_FILE" > .env
           printf "%s" "$CLIENT_SECRET_JSON" > client_secret.json
           printf "%s" "$YOUTUBE_TOKEN_JSON" > youtube-token.json
-          
           python -c "import json; d = {'English': {'playlist_id': 'PLXtXoI8JqBcI', 'privacy': 'public', 'category_id': '27', 'default_language': 'en'}, 'Hindi': {'playlist_id': 'PLUs3JAt3IsQI', 'privacy': 'public', 'category_id': '27', 'default_language': 'hi'}, 'Nepali': {'playlist_id': 'PLYr-1hw4Pgbo', 'privacy': 'public', 'category_id': '27', 'default_language': 'ne'}}; open('playlists.json', 'w').write(json.dumps(d))"
 
       - name: Auto-Generate Topics if Low
