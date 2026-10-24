@@ -2,7 +2,8 @@ name: Daily AI Video Upload
 
 on:
   schedule:
-    - cron: '0 4,16 * * *'
+    - cron: '30 19 * * *'
+    - cron: '15 8 * * *'
   workflow_dispatch:
 
 jobs:
@@ -22,7 +23,7 @@ jobs:
       - name: Install FFmpeg and Fonts
         run: |
           sudo apt-get update
-          sudo apt-get install -y ffmpeg fonts-dejavu
+          sudo apt-get install -y ffmpeg fonts-noto
 
       - name: Install Python Dependencies
         run: |
@@ -39,29 +40,10 @@ jobs:
           printf "%s" "$CLIENT_SECRET_JSON" > client_secret.json
           printf "%s" "$YOUTUBE_TOKEN_JSON" > youtube-token.json
           
-          # Automatically generate playlists.json
-          cat > playlists.json << 'PLAYLISTS_EOF'
-          {
-            "English": {
-              "playlist_id": "PLXtXoI8JqBcI",
-              "privacy": "public",
-              "category_id": "27",
-              "default_language": "en"
-            },
-            "Hindi": {
-              "playlist_id": "PLUs3JAt3IsQI",
-              "privacy": "public",
-              "category_id": "27",
-              "default_language": "hi"
-            },
-            "Nepali": {
-              "playlist_id": "PLYr-1hw4Pgbo",
-              "privacy": "public",
-              "category_id": "27",
-              "default_language": "ne"
-            }
-          }
-          PLAYLISTS_EOF
+          python -c "import json; d = {'English': {'playlist_id': 'PLXtXoI8JqBcI', 'privacy': 'public', 'category_id': '27', 'default_language': 'en'}, 'Hindi': {'playlist_id': 'PLUs3JAt3IsQI', 'privacy': 'public', 'category_id': '27', 'default_language': 'hi'}, 'Nepali': {'playlist_id': 'PLYr-1hw4Pgbo', 'privacy': 'public', 'category_id': '27', 'default_language': 'ne'}}; open('playlists.json', 'w').write(json.dumps(d))"
+
+      - name: Auto-Generate Topics if Low
+        run: python queue_generator.py
 
       - name: Run Scheduler
         run: python scheduler.py
