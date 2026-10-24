@@ -1,182 +1,1083 @@
 [
-  { "topic": "Why the sky is blue", "minutes": 5, "language": "English", "done": true },
-  { "topic": "आकाश नीला क्यों होता है", "minutes": 5, "language": "Hindi", "done": true },
-  { "topic": "आकाश नीलो किन हुन्छ", "minutes": 5, "language": "Nepali", "done": true },
-  { "topic": "How black holes form", "minutes": 5, "language": "English", "done": true },
-  { "topic": "ब्लैक होल कैसे बनते हैं", "minutes": 5, "language": "Hindi", "done": true },
-  { "topic": "ब्ल्याक होल कसरी बन्छन्", "minutes": 5, "language": "Nepali", "done": true },
-  { "topic": "The history of the internet", "minutes": 5, "language": "English", "done": false },
-  { "topic": "इंटरनेट का इतिहास", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "इन्टरनेटको इतिहास", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "Why do we dream?", "minutes": 5, "language": "English", "done": false },
-  { "topic": "हम सपने क्यों देखते हैं?", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "हामी सपना किन देख्छौं?", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The physics of time travel", "minutes": 5, "language": "English", "done": false },
-  { "topic": "टाइम ट्रैवल का भौतिक विज्ञान", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "टाइम ट्राभलको भौतिकी", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "How vaccines work", "minutes": 5, "language": "English", "done": false },
-  { "topic": "टीके कैसे काम करते हैं", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "खोपले कसरी काम गर्छ", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The mystery of dark matter", "minutes": 5, "language": "English", "done": false },
-  { "topic": "डार्क मैटर का रहस्य", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "डार्क म्याटरको रहस्य", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "How artificial intelligence works", "minutes": 5, "language": "English", "done": false },
-  { "topic": "आर्टिफिशियल इंटेलिजेंस कैसे काम करता है", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "कृत्रिम बुद्धिमत्ता कसरी काम गर्छ", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The future of space exploration", "minutes": 5, "language": "English", "done": false },
-  { "topic": "अंतरिक्ष अन्वेषण का भविष्य", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "अन्तरिक्ष अन्वेषणको भविष्य", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "What causes earthquakes?", "minutes": 5, "language": "English", "done": false },
-  { "topic": "भूकंप क्यों आते हैं?", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "भूकम्प किन आउँछ?", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The science of climate change", "minutes": 5, "language": "English", "done": false },
-  { "topic": "जलवायु परिवर्तन का विज्ञान", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "जलवायु परिवर्तनको विज्ञान", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "History of the Roman Empire", "minutes": 5, "language": "English", "done": false },
-  { "topic": "रोमन साम्राज्य का इतिहास", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "रोमन साम्राज्यको इतिहास", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "How the human brain works", "minutes": 5, "language": "English", "done": false },
-  { "topic": "मानव मस्तिष्क कैसे काम करता है", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "मानव मस्तिष्क कसरी काम गर्छ", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The mystery of the Bermuda Triangle", "minutes": 5, "language": "English", "done": false },
-  { "topic": "बरमूडा ट्रायंगल का रहस्य", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "बर्मुडा ट्रायंगलको रहस्य", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "What is quantum computing?", "minutes": 5, "language": "English", "done": false },
-  { "topic": "क्वांटम कंप्यूटिंग क्या है?", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "क्वान्टम कम्प्युटिङ के हो?", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The evolution of dinosaurs", "minutes": 5, "language": "English", "done": false },
-  { "topic": "डायनासोर का विकास", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "डायनासोरको विकास", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "How solar panels generate electricity", "minutes": 5, "language": "English", "done": false },
-  { "topic": "सोलर पैनल बिजली कैसे बनाते हैं", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "सोलार प्यानलले बिजुली कसरी उत्पादन गर्छ", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The story of the Great Wall of China", "minutes": 5, "language": "English", "done": false },
-  { "topic": "चीन की महान दीवार की कहानी", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "चीनको महान पर्खालको कथा", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "Why do volcanoes erupt?", "minutes": 5, "language": "English", "done": false },
-  { "topic": "ज्वालामुखी क्यों फटते हैं?", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "ज्वालामुखी किन फुट्छ?", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The discovery of DNA", "minutes": 5, "language": "English", "done": false },
-  { "topic": "डीएनए की खोज", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "डीएनएको खोज", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "How the stock market works", "minutes": 5, "language": "English", "done": false },
-  { "topic": "शेयर बाजार कैसे काम करता है", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "सेयर बजार कसरी काम गर्छ", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The history of the printing press", "minutes": 5, "language": "English", "done": false },
-  { "topic": "प्रिंटिंग प्रेस का इतिहास", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "प्रिन्टिङ प्रेसको इतिहास", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "Why do we get wrinkles?", "minutes": 5, "language": "English", "done": false },
-  { "topic": "हमें झुर्रियां क्यों पड़ती हैं?", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "हामीलाई चाउरी किन पर्छ?", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The science of nutrition", "minutes": 5, "language": "English", "done": false },
-  { "topic": "पोषण का विज्ञान", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "पोषणको विज्ञान", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "History of the Taj Mahal", "minutes": 5, "language": "English", "done": false },
-  { "topic": "ताजमहल का इतिहास", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "ताजमहलको इतिहास", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The future of electric cars", "minutes": 5, "language": "English", "done": false },
-  { "topic": "इलेक्ट्रिक कारों का भविष्य", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "विद्युतीय कारको भविष्य", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "How the immune system fights disease", "minutes": 5, "language": "English", "done": false },
-  { "topic": "प्रतिरक्षा प्रणाली बीमारियों से कैसे लड़ती है", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "प्रतिरक्षा प्रणालीले रोगसँग कसरी लड्छ", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The mystery of the Mariana Trench", "minutes": 5, "language": "English", "done": false },
-  { "topic": "मारियाना ट्रेंच का रहस्य", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "मारियाना ट्रेन्चको रहस्य", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The history of the Olympic Games", "minutes": 5, "language": "English", "done": false },
-  { "topic": "ओलंपिक खेलों का इतिहास", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "ओलम्पिक खेलको इतिहास", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "What are string theory and multiverses?", "minutes": 5, "language": "English", "done": false },
-  { "topic": "स्ट्रिंग सिद्धांत और मल्टीवर्स क्या हैं?", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "स्ट्रिङ सिद्धान्त र मल्टिभर्स के हुन्?", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The psychology of habits", "minutes": 5, "language": "English", "done": false },
-  { "topic": "आदतों का मनोविज्ञान", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "बानीको मनोविज्ञान", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "How GPS actually works", "minutes": 5, "language": "English", "done": false },
-  { "topic": "जीपीएस वास्तव में कैसे काम करता है", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "जीपीएस वास्तवमा कसरी काम गर्छ", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The story of the industrial revolution", "minutes": 5, "language": "English", "done": false },
-  { "topic": "औद्योगिक क्रांति की कहानी", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "औद्योगिक क्रान्तिको कथा", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "Why do cats purr?", "minutes": 5, "language": "English", "done": false },
-  { "topic": "बिल्लियाँ गुर्राती क्यों हैं?", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "बिरालो किन घुराउँछन्?", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The science of tornadoes", "minutes": 5, "language": "English", "done": false },
-  { "topic": "बवंडर का विज्ञान", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "टोर्नेडोको विज्ञान", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The history of the Cold War", "minutes": 5, "language": "English", "done": false },
-  { "topic": "शीत युद्ध का इतिहास", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "शीतयुद्धको इतिहास", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "How modern encryption works", "minutes": 5, "language": "English", "done": false },
-  { "topic": "आधुनिक एन्क्रिप्शन कैसे काम करता है", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "आधुनिक इन्क्रिप्शन कसरी काम गर्छ", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The mysteries of the deep ocean", "minutes": 5, "language": "English", "done": false },
-  { "topic": "गहरे समुद्र के रहस्य", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "गहिरो समुद्रको रहस्य", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "How do planes fly?", "minutes": 5, "language": "English", "done": false },
-  { "topic": "हवाई जहाज कैसे उड़ते हैं?", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "हवाईजहाज कसरी उड्छन्?", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The history of ancient Egypt", "minutes": 5, "language": "English", "done": false },
-  { "topic": "प्राचीन मिस्र का इतिहास", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "प्राचीन इजिप्टको इतिहास", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "What is cryptocurrency?", "minutes": 5, "language": "English", "done": false },
-  { "topic": "क्रिप्टोकरेंसी क्या है?", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "क्रिप्टोकरेन्सी के हो?", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The science of sleep", "minutes": 5, "language": "English", "done": false },
-  { "topic": "नींद का विज्ञान", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "निद्राको विज्ञान", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "How do 3D printers work?", "minutes": 5, "language": "English", "done": false },
-  { "topic": "3डी प्रिंटर कैसे काम करते हैं?", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "३डी प्रिन्टर कसरी काम गर्छन्?", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The history of the Silk Road", "minutes": 5, "language": "English", "done": false },
-  { "topic": "रेशम मार्ग का इतिहास", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "रेशम मार्गको इतिहास", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "Why is the ocean salty?", "minutes": 5, "language": "English", "done": false },
-  { "topic": "समुद्र में नमक क्यों होता है?", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "समुद्र किन नुनिलो हुन्छ?", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The science of natural disasters", "minutes": 5, "language": "English", "done": false },
-  { "topic": "प्राकृतिक आपदाओं का विज्ञान", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "प्राकृतिक प्रकोपको विज्ञान", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "How does the brain store memories?", "minutes": 5, "language": "English", "done": false },
-  { "topic": "मस्तिष्क यादें कैसे संग्रहीत करता है?", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "मस्तिष्कले सम्झनाहरू कसरी भण्डारण गर्छ?", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The history of the Aztec Empire", "minutes": 5, "language": "English", "done": false },
-  { "topic": "एज्टेक साम्राज्य का इतिहास", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "एज्टेक साम्राज्यको इतिहास", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "What causes the Northern Lights?", "minutes": 5, "language": "English", "done": false },
-  { "topic": "उत्तरी रोशनी क्यों होती है?", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "उत्तरी ज्योति किन हुन्छ?", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The future of robotics", "minutes": 5, "language": "English", "done": false },
-  { "topic": "रोबोटिक्स का भविष्य", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "रोबोटिक्सको भविष्य", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "How do antibiotics work?", "minutes": 5, "language": "English", "done": false },
-  { "topic": "एंटीबायोटिक्स कैसे काम करते हैं?", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "एन्टिबायोटिक कसरी काम गर्छ?", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The history of the telephone", "minutes": 5, "language": "English", "done": false },
-  { "topic": "टेलीफोन का इतिहास", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "टेलिफोनको इतिहास", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The science of happiness", "minutes": 5, "language": "English", "done": false },
-  { "topic": "खुशी का विज्ञान", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "खुशीको विज्ञान", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "How does Wi-Fi work?", "minutes": 5, "language": "English", "done": false },
-  { "topic": "वाई-फाई कैसे काम करता है?", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "वाई-फाई कसरी काम गर्छ?", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The history of ancient Greece", "minutes": 5, "language": "English", "done": false },
-  { "topic": "प्राचीन ग्रीस का इतिहास", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "प्राचीन ग्रीसको इतिहास", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "What is genetic engineering?", "minutes": 5, "language": "English", "done": false },
-  { "topic": "आनुवंशिक इंजीनियरिंग क्या है?", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "आनुवंशिक ईन्जिनियरिङ के हो?", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The mystery of Stonehenge", "minutes": 5, "language": "English", "done": false },
-  { "topic": "स्टोनहेंज का रहस्य", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "स्टोनहेन्जको रहस्य", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The history of the Eiffel Tower", "minutes": 5, "language": "English", "done": false },
-  { "topic": "एफिल टॉवर का इतिहास", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "आइफिल टावरको इतिहास", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "How do batteries work?", "minutes": 5, "language": "English", "done": false },
-  { "topic": "बैटरी कैसे काम करती है?", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "ब्याट्री कसरी काम गर्छ?", "minutes": 5, "language": "Nepali", "done": false },
-  { "topic": "The future of space tourism", "minutes": 5, "language": "English", "done": false },
-  { "topic": "अंतरिक्ष पर्यटन का भविष्य", "minutes": 5, "language": "Hindi", "done": false },
-  { "topic": "अन्तरिक्ष पर्यटनको भविष्य", "minutes": 5, "language": "Nepali", "done": false }
+  {
+    "topic": "Why the sky is blue",
+    "minutes": 5,
+    "language": "English",
+    "done": true
+  },
+  {
+    "topic": "आकाश नीला क्यों होता है",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": true
+  },
+  {
+    "topic": "आकाश नीलो किन हुन्छ",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": true
+  },
+  {
+    "topic": "How black holes form",
+    "minutes": 5,
+    "language": "English",
+    "done": true
+  },
+  {
+    "topic": "ब्लैक होल कैसे बनते हैं",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": true
+  },
+  {
+    "topic": "ब्ल्याक होल कसरी बन्छन्",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": true
+  },
+  {
+    "topic": "The history of the internet",
+    "minutes": 5,
+    "language": "English",
+    "done": true,
+    "done_at": "2026-10-24T06:15:20.665405"
+  },
+  {
+    "topic": "इंटरनेट का इतिहास",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "इन्टरनेटको इतिहास",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "Why do we dream?",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "हम सपने क्यों देखते हैं?",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "हामी सपना किन देख्छौं?",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The physics of time travel",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "टाइम ट्रैवल का भौतिक विज्ञान",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "टाइम ट्राभलको भौतिकी",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "How vaccines work",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "टीके कैसे काम करते हैं",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "खोपले कसरी काम गर्छ",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The mystery of dark matter",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "डार्क मैटर का रहस्य",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "डार्क म्याटरको रहस्य",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "How artificial intelligence works",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "आर्टिफिशियल इंटेलिजेंस कैसे काम करता है",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "कृत्रिम बुद्धिमत्ता कसरी काम गर्छ",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The future of space exploration",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "अंतरिक्ष अन्वेषण का भविष्य",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "अन्तरिक्ष अन्वेषणको भविष्य",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "What causes earthquakes?",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "भूकंप क्यों आते हैं?",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "भूकम्प किन आउँछ?",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The science of climate change",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "जलवायु परिवर्तन का विज्ञान",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "जलवायु परिवर्तनको विज्ञान",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "History of the Roman Empire",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "रोमन साम्राज्य का इतिहास",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "रोमन साम्राज्यको इतिहास",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "How the human brain works",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "मानव मस्तिष्क कैसे काम करता है",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "मानव मस्तिष्क कसरी काम गर्छ",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The mystery of the Bermuda Triangle",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "बरमूडा ट्रायंगल का रहस्य",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "बर्मुडा ट्रायंगलको रहस्य",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "What is quantum computing?",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "क्वांटम कंप्यूटिंग क्या है?",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "क्वान्टम कम्प्युटिङ के हो?",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The evolution of dinosaurs",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "डायनासोर का विकास",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "डायनासोरको विकास",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "How solar panels generate electricity",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "सोलर पैनल बिजली कैसे बनाते हैं",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "सोलार प्यानलले बिजुली कसरी उत्पादन गर्छ",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The story of the Great Wall of China",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "चीन की महान दीवार की कहानी",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "चीनको महान पर्खालको कथा",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "Why do volcanoes erupt?",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "ज्वालामुखी क्यों फटते हैं?",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "ज्वालामुखी किन फुट्छ?",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The discovery of DNA",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "डीएनए की खोज",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "डीएनएको खोज",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "How the stock market works",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "शेयर बाजार कैसे काम करता है",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "सेयर बजार कसरी काम गर्छ",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The history of the printing press",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "प्रिंटिंग प्रेस का इतिहास",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "प्रिन्टिङ प्रेसको इतिहास",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "Why do we get wrinkles?",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "हमें झुर्रियां क्यों पड़ती हैं?",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "हामीलाई चाउरी किन पर्छ?",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The science of nutrition",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "पोषण का विज्ञान",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "पोषणको विज्ञान",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "History of the Taj Mahal",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "ताजमहल का इतिहास",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "ताजमहलको इतिहास",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The future of electric cars",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "इलेक्ट्रिक कारों का भविष्य",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "विद्युतीय कारको भविष्य",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "How the immune system fights disease",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "प्रतिरक्षा प्रणाली बीमारियों से कैसे लड़ती है",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "प्रतिरक्षा प्रणालीले रोगसँग कसरी लड्छ",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The mystery of the Mariana Trench",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "मारियाना ट्रेंच का रहस्य",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "मारियाना ट्रेन्चको रहस्य",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The history of the Olympic Games",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "ओलंपिक खेलों का इतिहास",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "ओलम्पिक खेलको इतिहास",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "What are string theory and multiverses?",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "स्ट्रिंग सिद्धांत और मल्टीवर्स क्या हैं?",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "स्ट्रिङ सिद्धान्त र मल्टिभर्स के हुन्?",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The psychology of habits",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "आदतों का मनोविज्ञान",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "बानीको मनोविज्ञान",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "How GPS actually works",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "जीपीएस वास्तव में कैसे काम करता है",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "जीपीएस वास्तवमा कसरी काम गर्छ",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The story of the industrial revolution",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "औद्योगिक क्रांति की कहानी",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "औद्योगिक क्रान्तिको कथा",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "Why do cats purr?",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "बिल्लियाँ गुर्राती क्यों हैं?",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "बिरालो किन घुराउँछन्?",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The science of tornadoes",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "बवंडर का विज्ञान",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "टोर्नेडोको विज्ञान",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The history of the Cold War",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "शीत युद्ध का इतिहास",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "शीतयुद्धको इतिहास",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "How modern encryption works",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "आधुनिक एन्क्रिप्शन कैसे काम करता है",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "आधुनिक इन्क्रिप्शन कसरी काम गर्छ",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The mysteries of the deep ocean",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "गहरे समुद्र के रहस्य",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "गहिरो समुद्रको रहस्य",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "How do planes fly?",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "हवाई जहाज कैसे उड़ते हैं?",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "हवाईजहाज कसरी उड्छन्?",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The history of ancient Egypt",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "प्राचीन मिस्र का इतिहास",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "प्राचीन इजिप्टको इतिहास",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "What is cryptocurrency?",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "क्रिप्टोकरेंसी क्या है?",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "क्रिप्टोकरेन्सी के हो?",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The science of sleep",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "नींद का विज्ञान",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "निद्राको विज्ञान",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "How do 3D printers work?",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "3डी प्रिंटर कैसे काम करते हैं?",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "३डी प्रिन्टर कसरी काम गर्छन्?",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The history of the Silk Road",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "रेशम मार्ग का इतिहास",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "रेशम मार्गको इतिहास",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "Why is the ocean salty?",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "समुद्र में नमक क्यों होता है?",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "समुद्र किन नुनिलो हुन्छ?",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The science of natural disasters",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "प्राकृतिक आपदाओं का विज्ञान",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "प्राकृतिक प्रकोपको विज्ञान",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "How does the brain store memories?",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "मस्तिष्क यादें कैसे संग्रहीत करता है?",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "मस्तिष्कले सम्झनाहरू कसरी भण्डारण गर्छ?",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The history of the Aztec Empire",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "एज्टेक साम्राज्य का इतिहास",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "एज्टेक साम्राज्यको इतिहास",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "What causes the Northern Lights?",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "उत्तरी रोशनी क्यों होती है?",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "उत्तरी ज्योति किन हुन्छ?",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The future of robotics",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "रोबोटिक्स का भविष्य",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "रोबोटिक्सको भविष्य",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "How do antibiotics work?",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "एंटीबायोटिक्स कैसे काम करते हैं?",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "एन्टिबायोटिक कसरी काम गर्छ?",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The history of the telephone",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "टेलीफोन का इतिहास",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "टेलिफोनको इतिहास",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The science of happiness",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "खुशी का विज्ञान",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "खुशीको विज्ञान",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "How does Wi-Fi work?",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "वाई-फाई कैसे काम करता है?",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "वाई-फाई कसरी काम गर्छ?",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The history of ancient Greece",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "प्राचीन ग्रीस का इतिहास",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "प्राचीन ग्रीसको इतिहास",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "What is genetic engineering?",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "आनुवंशिक इंजीनियरिंग क्या है?",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "आनुवंशिक ईन्जिनियरिङ के हो?",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The mystery of Stonehenge",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "स्टोनहेंज का रहस्य",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "स्टोनहेन्जको रहस्य",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The history of the Eiffel Tower",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "एफिल टॉवर का इतिहास",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "आइफिल टावरको इतिहास",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "How do batteries work?",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "बैटरी कैसे काम करती है?",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "ब्याट्री कसरी काम गर्छ?",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  },
+  {
+    "topic": "The future of space tourism",
+    "minutes": 5,
+    "language": "English",
+    "done": false
+  },
+  {
+    "topic": "अंतरिक्ष पर्यटन का भविष्य",
+    "minutes": 5,
+    "language": "Hindi",
+    "done": false
+  },
+  {
+    "topic": "अन्तरिक्ष पर्यटनको भविष्य",
+    "minutes": 5,
+    "language": "Nepali",
+    "done": false
+  }
 ]
