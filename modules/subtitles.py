@@ -21,42 +21,37 @@ def _fmt(seconds):
     cs = int((seconds % 1) * 100)
     return f"{h}:{m:02d}:{s:02d}.{cs:02d}"
 
-def build_ass(script_text, output_path, audio_duration, max_words_per_phrase=5):
+def build_ass(script_text, output_path, word_timestamps, max_words_per_phrase=5):
+    """Build ASS subtitle file using exact word timestamps from forced alignment."""
     import re
-    text = re.sub(r"\s+", " ", script_text).strip()
-    sentences = re.split(r"(?<=[.!?।])\s+", text)
-
+    
+    # Group words into phrases
     phrases = []
-    for sentence in sentences:
-        words = sentence.split()
-        if not words: continue
-        for i in range(0, len(words), max_words_per_phrase):
-            phrases.append(words[i:i + max_words_per_phrase])
-
-    total_words = sum(len(p) for p in phrases)
-    if audio_duration <= 0: audio_duration = 1.0
-    wps = total_words / audio_duration
+    current_phrase = []
+    for word_data in word_timestamps:
+        current_phrase.append(word_data)
+        if len(current_phrase) >= max_words_per_phrase or word_data['word'].endswith(('.', '!', '?', '।')):
+            phrases.append(current_phrase)
+            current_phrase = []
+    if current_phrase:
+        phrases.append(current_phrase)
 
     events = []
-    t = 0.5
     for phrase in phrases:
-        phrase_duration = max(0.8, len(phrase) / wps)
-        word_duration = phrase_duration / len(phrase)
-
-        for i, word in enumerate(phrase):
-            start = t + i * word_duration
-            end = start + word_duration
-            before = " ".join(phrase[:i])
-            current = word
-            after = " ".join(phrase[i + 1:])
-            parts = []
-            if before: parts.append(before + " ")
-            parts.append(f"{{\\c&H0000FFFF&}}{current}{{\\c&H00FFFFFF&}}")
-            if after: parts.append(" " + after)
-            line = "".join(parts)
-            events.append(f"Dialogue: 0,{_fmt(start)},{_fmt(end)},Default,,0,0,0,,{line}")
-
-        t += phrase_duration
+        start_time = phrase[0]['start']
+        end_time = phrase[-1]['end']
+        
+        # Build the text with word highlighting
+        parts = []
+        for i, word_data in enumerate(phrase):
+            word = word_data['word']
+            # Highlight the current word in yellow
+            parts.append(f"{{\\c&H0000FFFF&}}{word}{{\\c&H00FFFFFF&}}")
+            if i < len(phrase) - 1:
+                parts.append(" ")
+        
+        line = "".join(parts)
+        events.append(f"Dialogue: 0,{_fmt(start_time)},{_fmt(end_time)},Default,,0,0,0,,{line}")
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(ASS_HEADER)

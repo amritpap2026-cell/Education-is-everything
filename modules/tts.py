@@ -1,7 +1,15 @@
 """Voiceover generation: Gemini TTS primary, gTTS fallback, ASS subtitles."""
-import asyncio, base64, json, os, shutil, subprocess, urllib.request
+import asyncio
+import base64
+import json
+import os
+import shutil
+import subprocess
+import urllib.request
 from pathlib import Path
+
 from gtts import gTTS
+import stable_whisper
 from modules.subtitles import build_ass
 
 TEMP_DIR = Path("assets/temp")
@@ -99,6 +107,18 @@ def _gtts_tts(text, language, output_path):
         subprocess.run(f'ffmpeg -y -f concat -safe 0 -i "{concat_file}" -c copy "{output_path}"', shell=True)
     return os.path.exists(output_path) and os.path.getsize(output_path) > 1000
 
+def _estimate_timestamps(text):
+    """Fallback method: Estimate word timestamps based on average speaking speed."""
+    words = text.split()
+    wps = 2.5
+    duration = 1.0 / wps
+    timestamps = []
+    current_time = 0.5
+    for word in words:
+        timestamps.append({'word': word, 'start': current_time, 'end': current_time + duration})
+        current_time += duration
+    return timestamps
+
 def generate_voiceover(full_script, language="English"):
     audio_path = TEMP_DIR / "voiceover.mp3"
     ass_path = TEMP_DIR / "subtitles.ass"
@@ -109,12 +129,35 @@ def generate_voiceover(full_script, language="English"):
         if not _validate_audio_duration(str(audio_path), full_script):
             print("   Gemini TTS audio seems truncated. Falling back to gTTS...")
             ok = _gtts_tts(full_script, language, str(audio_path))
+    
     if not ok:
         print(f"   Gemini TTS failed. Falling back to gTTS...")
         ok = _gtts_tts(full_script, language, str(audio_path))
+    
     if not ok: raise RuntimeError("All TTS engines failed.")
 
-    audio_duration = _get_audio_duration(str(audio_path))
-    print(f"   Building ASS subtitles (audio duration: {audio_duration:.2f}s)...")
-    build_ass(full_script, str(ass_path), audio_duration)
+    # --- FORCED ALIGNMENT FOR SUBTITLES ---
+    print(f"   Aligning audio and text for perfect captions...")
+    try:
+        # Load the Whisper model (base is fast and accurate enough for captions)
+        model = stable_whisper.load_model('base')
+        # Force align the original script to the generated audio
+        result = model.align(str(audio_path), full_script, language=LANG_CODES.get(language, "en"))
+        
+        word_timestamps = []
+        for segment in result.segments:
+            for word in segment.words:
+                word_timestamps.append({
+                    'word': word.word,
+                    'start': word.start,
+                    'end': word.end
+                })
+        print(f"   ✅ Successfully aligned {len(word_timestamps)} words.")
+    except Exception as e:
+        print(f"   ⚠️ Alignment failed ({str(e)[:50]}). Using estimated timestamps as fallback.")
+        word_timestamps = _estimate_timestamps(full_script)
+
+    print(f"   Building ASS subtitles...")
+    build_ass(full_script, str(ass_path), word_timestamps)
+    
     return str(audio_path), str(ass_path)
