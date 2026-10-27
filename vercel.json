@@ -1,5 +1,6 @@
 {
   "buildCommand": "echo 'Vercel build skipped'",
   "outputDirectory": ".",
-  "framework": null
+  "framework": null,
+  "cleanUrls": true
 }
