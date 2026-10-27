@@ -59,42 +59,21 @@
         }
         .btn:hover { opacity: 0.9; }
         
-        /* Legal Section Styles */
-        .legal-container {
-            max-width: 1000px;
-            margin: 0 auto 60px auto;
-            padding: 0 20px;
-        }
-        details {
+        /* Legal Section Styles (Fully Visible) */
+        .legal-container { max-width: 1000px; margin: 0 auto 60px auto; padding: 0 20px; }
+        .legal-box {
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 12px;
-            margin-bottom: 15px;
-            overflow: hidden;
+            padding: 30px;
+            margin-bottom: 30px;
         }
-        summary {
-            padding: 20px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--accent);
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        summary::-webkit-details-marker { display: none; }
-        summary::after { content: '+'; font-size: 1.5rem; color: var(--text); }
-        details[open] summary::after { content: '-'; }
-        .legal-content {
-            padding: 0 20px 20px 20px;
-            color: var(--muted);
-            font-size: 0.95rem;
-            border-top: 1px solid var(--border);
-        }
-        .legal-content h4 { color: var(--text); margin: 15px 0 5px 0; }
-        .legal-content p { margin-bottom: 10px; }
-        .legal-content ul { margin-left: 20px; margin-bottom: 10px; }
+        .legal-box h2 { text-align: left; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 20px; font-size: 1.5rem; }
+        .legal-box h4 { color: var(--text); margin: 15px 0 5px 0; font-size: 1.1rem; }
+        .legal-box p, .legal-box ul { color: var(--muted); font-size: 0.95rem; margin-bottom: 10px; }
+        .legal-box ul { margin-left: 20px; }
+        .legal-box a { color: var(--accent); text-decoration: none; }
+        .legal-box a:hover { text-decoration: underline; }
 
         footer {
             text-align: center;
@@ -136,49 +115,45 @@
         </div>
     </div>
 
-    <!-- Legal Sections -->
+    <!-- Legal Sections (Visible) -->
     <div class="legal-container">
-        <h2>Legal Information</h2>
         
-        <details>
-            <summary>Privacy Policy</summary>
-            <div class="legal-content">
-                <p><strong>Last updated: October 2026</strong></p>
-                <p>This Privacy Policy describes how "Education is Everything" ("we," "us," or "our") handles information in connection with our automated content creation application.</p>
-                
-                <h4>1. Information We Collect</h4>
-                <p>Our application does not collect, store, or process any personal data from viewers or users. We do not use cookies, tracking pixels, or analytics on this website.</p>
-                
-                <h4>2. Use of YouTube API Services</h4>
-                <p>Our application uses YouTube API Services to upload generated video content to our own YouTube channel. By using this application, you agree to be bound by the <a href="https://www.youtube.com/t/terms" target="_blank" style="color:var(--accent);">YouTube Terms of Service</a>. You can view the <a href="https://policies.google.com/privacy" target="_blank" style="color:var(--accent);">Google Privacy Policy</a> for more information on how Google handles data.</p>
-                
-                <h4>3. Data Security</h4>
-                <p>Since we do not collect personal data, there is no user data to secure. Our API credentials and OAuth tokens are stored securely and are never shared with third parties.</p>
+        <div class="legal-box" id="privacy-policy">
+            <h2>Privacy Policy</h2>
+            <p><strong>Last updated: October 2026</strong></p>
+            <p>This Privacy Policy describes how "Education is Everything" ("we," "us," or "our") handles information in connection with our automated content creation application.</p>
+            
+            <h4>1. Information We Collect</h4>
+            <p>Our application does not collect, store, or process any personal data from viewers or users. We do not use cookies, tracking pixels, or analytics on this website.</p>
+            
+            <h4>2. Use of YouTube API Services</h4>
+            <p>Our application uses YouTube API Services to upload generated video content to our own YouTube channel. By using this application, you agree to be bound by the <a href="https://www.youtube.com/t/terms" target="_blank">YouTube Terms of Service</a>. You can view the <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a> for more information on how Google handles data.</p>
+            
+            <h4>3. Data Security</h4>
+            <p>Since we do not collect personal data, there is no user data to secure. Our API credentials and OAuth tokens are stored securely and are never shared with third parties.</p>
 
-                <h4>4. Contact Us</h4>
-                <p>If you have any questions about this Privacy Policy, please contact us via our YouTube channel.</p>
-            </div>
-        </details>
+            <h4>4. Contact Us</h4>
+            <p>If you have any questions about this Privacy Policy, please contact us via our YouTube channel.</p>
+        </div>
 
-        <details>
-            <summary>Terms of Service</summary>
-            <div class="legal-content">
-                <p><strong>Last updated: October 2026</strong></p>
-                <p>Welcome to "Education is Everything". By accessing this website, you agree to these Terms of Service.</p>
-                
-                <h4>1. Use of Content</h4>
-                <p>All videos, images, text, and other content generated by this application and published on YouTube are the property of "Education is Everything". You may view and share our content via official YouTube embed features, but you may not download, re-upload, or monetize our content without explicit permission.</p>
-                
-                <h4>2. Nature of Service</h4>
-                <p>This website acts as a public landing page for our YouTube channel. The automated tools used to generate content are for internal use only. We do not provide a public API or SaaS service for third parties.</p>
+        <div class="legal-box" id="terms-of-service">
+            <h2>Terms of Service</h2>
+            <p><strong>Last updated: October 2026</strong></p>
+            <p>Welcome to "Education is Everything". By accessing this website, you agree to these Terms of Service.</p>
+            
+            <h4>1. Use of Content</h4>
+            <p>All videos, images, text, and other content generated by this application and published on YouTube are the property of "Education is Everything". You may view and share our content via official YouTube embed features, but you may not download, re-upload, or monetize our content without explicit permission.</p>
+            
+            <h4>2. Nature of Service</h4>
+            <p>This website acts as a public landing page for our YouTube channel. The automated tools used to generate content are for internal use only. We do not provide a public API or SaaS service for third parties.</p>
 
-                <h4>3. Disclaimer</h4>
-                <p>Our content is for educational and entertainment purposes. While we strive for accuracy, we make no warranties regarding the completeness or reliability of the information presented. Use of the information is at your own risk.</p>
+            <h4>3. Disclaimer</h4>
+            <p>Our content is for educational and entertainment purposes. While we strive for accuracy, we make no warranties regarding the completeness or reliability of the information presented. Use of the information is at your own risk.</p>
 
-                <h4>4. Changes to Terms</h4>
-                <p>We reserve the right to modify these terms at any time. Continued use of the website constitutes acceptance of the updated terms.</p>
-            </div>
-        </details>
+            <h4>4. Changes to Terms</h4>
+            <p>We reserve the right to modify these terms at any time. Continued use of the website constitutes acceptance of the updated terms.</p>
+        </div>
+
     </div>
 
     <footer>
