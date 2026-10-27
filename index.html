@@ -5,87 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Education is Everything | AI Content Studio</title>
     <style>
-        :root {
-            --bg: #0a0a0f;
-            --card-bg: #15151c;
-            --text: #e5e5e5;
-            --muted: #888;
-            --accent: #fbbf24;
-            --border: #25252f;
-        }
+        :root { --bg: #0a0a0f; --card-bg: #15151c; --text: #e5e5e5; --muted: #888; --accent: #fbbf24; --border: #25252f; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-        header {
-            text-align: center;
-            padding: 80px 20px;
-            background: radial-gradient(circle at top, #1a1a24 0%, var(--bg) 100%);
-            border-bottom: 1px solid var(--border);
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        header { text-align: center; padding: 80px 20px; background: radial-gradient(circle at top, #1a1a24 0%, var(--bg) 100%); border-bottom: 1px solid var(--border); }
         h1 { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; letter-spacing: -0.5px; }
         p.subtitle { font-size: 1.2rem; color: var(--muted); max-width: 600px; margin: 0 auto 30px auto; }
         .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
         h2 { font-size: 1.8rem; margin-bottom: 30px; text-align: center; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 30px;
-            text-decoration: none;
-            color: var(--text);
-            transition: transform 0.2s, border-color 0.2s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
+        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 30px; text-decoration: none; color: var(--text); transition: transform 0.2s, border-color 0.2s; display: flex; flex-direction: column; align-items: center; text-align: center; }
         .card:hover { transform: translateY(-5px); border-color: var(--accent); }
         .card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--accent); }
         .card p { color: var(--muted); font-size: 0.95rem; }
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--bg);
-            padding: 12px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: opacity 0.2s;
-        }
+        .btn { display: inline-block; background: var(--accent); color: var(--bg); padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: opacity 0.2s; }
         .btn:hover { opacity: 0.9; }
         
-        /* Legal Section Styles (Fully Visible) */
-        .legal-container { max-width: 1000px; margin: 0 auto 60px auto; padding: 0 20px; }
-        .legal-box {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-        .legal-box h2 { text-align: left; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 20px; font-size: 1.5rem; }
-        .legal-box h4 { color: var(--text); margin: 15px 0 5px 0; font-size: 1.1rem; }
-        .legal-box p, .legal-box ul { color: var(--muted); font-size: 0.95rem; margin-bottom: 10px; }
-        .legal-box ul { margin-left: 20px; }
-        .legal-box a { color: var(--accent); text-decoration: none; }
-        .legal-box a:hover { text-decoration: underline; }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: var(--muted);
-            font-size: 0.8rem;
-            border-top: 1px solid var(--border);
-        }
+        footer { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--border); background: var(--card-bg); }
+        .footer-links { margin-bottom: 15px; }
+        .footer-links a { color: var(--accent); text-decoration: none; margin: 0 15px; font-weight: bold; }
+        .footer-links a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
-
     <header>
         <h1>Education is Everything</h1>
         <p class="subtitle">Explore the science, history, and technology that shape our world. New documentaries every day.</p>
@@ -95,19 +37,14 @@
     <div class="container">
         <h2>Explore Our Playlists</h2>
         <div class="grid">
-            <!-- English Playlist -->
             <a href="https://youtube.com/playlist?list=PLXtXoI8JqBcI" class="card" target="_blank">
                 <h3>🇬🇧 English</h3>
                 <p>Curiosity Lab: Learn Anything</p>
             </a>
-
-            <!-- Hindi Playlist -->
             <a href="https://youtube.com/playlist?list=PLUs3JAt3IsQI" class="card" target="_blank">
                 <h3>🇮🇳 Hindi</h3>
                 <p>Gyan Vigyan: Dilchasp Kahaniyan</p>
             </a>
-
-            <!-- Nepali Playlist -->
             <a href="https://youtube.com/playlist?list=PLYr-1hw4Pgbo" class="card" target="_blank">
                 <h3>🇳🇵 Nepali</h3>
                 <p>Gyan Sagar: Jigyasa ra Shikshya</p>
@@ -115,50 +52,12 @@
         </div>
     </div>
 
-    <!-- Legal Sections (Visible) -->
-    <div class="legal-container">
-        
-        <div class="legal-box" id="privacy-policy">
-            <h2>Privacy Policy</h2>
-            <p><strong>Last updated: October 2026</strong></p>
-            <p>This Privacy Policy describes how "Education is Everything" ("we," "us," or "our") handles information in connection with our automated content creation application.</p>
-            
-            <h4>1. Information We Collect</h4>
-            <p>Our application does not collect, store, or process any personal data from viewers or users. We do not use cookies, tracking pixels, or analytics on this website.</p>
-            
-            <h4>2. Use of YouTube API Services</h4>
-            <p>Our application uses YouTube API Services to upload generated video content to our own YouTube channel. By using this application, you agree to be bound by the <a href="https://www.youtube.com/t/terms" target="_blank">YouTube Terms of Service</a>. You can view the <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a> for more information on how Google handles data.</p>
-            
-            <h4>3. Data Security</h4>
-            <p>Since we do not collect personal data, there is no user data to secure. Our API credentials and OAuth tokens are stored securely and are never shared with third parties.</p>
-
-            <h4>4. Contact Us</h4>
-            <p>If you have any questions about this Privacy Policy, please contact us via our YouTube channel.</p>
-        </div>
-
-        <div class="legal-box" id="terms-of-service">
-            <h2>Terms of Service</h2>
-            <p><strong>Last updated: October 2026</strong></p>
-            <p>Welcome to "Education is Everything". By accessing this website, you agree to these Terms of Service.</p>
-            
-            <h4>1. Use of Content</h4>
-            <p>All videos, images, text, and other content generated by this application and published on YouTube are the property of "Education is Everything". You may view and share our content via official YouTube embed features, but you may not download, re-upload, or monetize our content without explicit permission.</p>
-            
-            <h4>2. Nature of Service</h4>
-            <p>This website acts as a public landing page for our YouTube channel. The automated tools used to generate content are for internal use only. We do not provide a public API or SaaS service for third parties.</p>
-
-            <h4>3. Disclaimer</h4>
-            <p>Our content is for educational and entertainment purposes. While we strive for accuracy, we make no warranties regarding the completeness or reliability of the information presented. Use of the information is at your own risk.</p>
-
-            <h4>4. Changes to Terms</h4>
-            <p>We reserve the right to modify these terms at any time. Continued use of the website constitutes acceptance of the updated terms.</p>
-        </div>
-
-    </div>
-
     <footer>
-        &copy; 2026 Education is Everything. All rights reserved.
+        <div class="footer-links">
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+        </div>
+        <p>&copy; 2026 Education is Everything. All rights reserved.</p>
     </footer>
-
 </body>
 </html>
