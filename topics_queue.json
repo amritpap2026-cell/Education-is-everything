@@ -88,19 +88,22 @@
     "topic": "टाइम ट्रैवल का भौतिक विज्ञान",
     "minutes": 5,
     "language": "Hindi",
-    "done": false
+    "done": true,
+    "done_at": "2026-10-29T09:59:00.149040"
   },
   {
     "topic": "टाइम ट्राभलको भौतिकी",
     "minutes": 5,
     "language": "Nepali",
-    "done": false
+    "done": true,
+    "done_at": "2026-10-29T15:20:55.458467"
   },
   {
     "topic": "How vaccines work",
     "minutes": 5,
     "language": "English",
-    "done": false
+    "done": true,
+    "done_at": "2026-10-29T23:42:47.296540"
   },
   {
     "topic": "टीके कैसे काम करते हैं",
