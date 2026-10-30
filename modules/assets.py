@@ -2,9 +2,11 @@
 import base64, os, random, time, urllib.parse
 from pathlib import Path
 import requests
+from PIL import Image, ImageDraw, ImageFont
 
 TEMP_DIR = Path("assets/temp")
 TEMP_DIR.mkdir(parents=True, exist_ok=True)
+
 HEADERS = {"User-Agent": "Mozilla/5.0 (AutoVideoPipeline/1.0)"}
 
 def _valid(path):
@@ -33,9 +35,7 @@ def fetch_cloudflare_image(prompt: str, scene_id: str):
             elif content_type.startswith("image/"):
                 with open(filepath, "wb") as f: f.write(r.content)
                 return str(filepath)
-        print(f"      Cloudflare status {r.status_code}")
-    except Exception as e:
-        print(f"      Cloudflare exception: {str(e)[:80]}")
+    except Exception: pass
     return None
 
 def fetch_hf_image(prompt: str, scene_id: str):
@@ -135,20 +135,9 @@ def fetch_asset_for_scene(scene: dict):
 
     print(f"      DEBUG: {scene_id} | type={vtype} | source={source} | query='{query[:50]}'")
 
-    if vtype == "AI_VIDEO_LOOP":
-        try:
-            from modules.ai_video import fetch_ai_video
-            result = fetch_ai_video(query, scene_id, duration=5)
-            if result and _valid(result): return result
-        except Exception as e:
-            print(f"      fal.ai exception: {e}")
-        print("      Fallback: fal.ai failed, trying AI Image.")
-        vtype = "AI_IMAGE"
-
     if vtype == "AI_IMAGE" or source == "Cloudflare":
         result = _image_chain(query, scene_id)
         if result and _valid(result): return result
-        print("      Fallback: Image chain failed, trying Stock Video.")
         vtype = "STOCK_VIDEO"
 
     if vtype == "STOCK_VIDEO" or source in ("Pexels", "Pixabay"):
@@ -156,5 +145,48 @@ def fetch_asset_for_scene(scene: dict):
         result = _video_chain(query, scene_id, primary=primary)
         if result and _valid(result): return result
 
-    print(f"      FAIL {scene_id}: all sources exhausted, trying one last image.")
     return _image_chain(query, scene_id)
+
+def generate_custom_thumbnail(prompt: str, header_text: str, subheader_text: str, language: str) -> str:
+    """Generates a background (rotating AI/Unsplash) and overlays centered YouTube-style text."""
+    if random.choice([True, False]):
+        print("      Thumbnail Background: Cloudflare AI")
+        bg_path = fetch_cloudflare_image(prompt, "THUMBNAIL")
+        if not bg_path: bg_path = fetch_unsplash_image(prompt, "THUMBNAIL")
+    else:
+        print("      Thumbnail Background: Unsplash Stock")
+        bg_path = fetch_unsplash_image(prompt, "THUMBNAIL")
+        if not bg_path: bg_path = fetch_cloudflare_image(prompt, "THUMBNAIL")
+
+    if not bg_path or not _valid(bg_path): return None
+
+    img = Image.open(bg_path).convert("RGBA")
+    img = img.resize((1280, 720), Image.Resampling.LANCZOS)
+    
+    # Dark overlay for text readability
+    overlay = Image.new("RGBA", img.size, (0, 0, 0, 100))
+    img = Image.alpha_composite(img, overlay)
+    
+    draw = ImageDraw.Draw(img)
+    
+    font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+    if language in ["Hindi", "Nepali"]:
+        font_path = "/usr/share/fonts/truetype/noto/NotoSansDevanagari-Bold.ttf"
+    
+    try:
+        header_font = ImageFont.truetype(font_path, 140)
+        sub_font = ImageFont.truetype(font_path, 70)
+    except Exception:
+        header_font = ImageFont.load_default()
+        sub_font = ImageFont.load_default()
+
+    # Center Header
+    draw.text((640, 300), header_text.upper(), font=header_font, fill="#FFE600", stroke_width=14, stroke_fill="black", anchor="mm")
+    # Center Subheader
+    draw.text((640, 450), subheader_text, font=sub_font, fill="white", stroke_width=8, stroke_fill="black", anchor="mm")
+
+    final_thumb_path = TEMP_DIR / "final_thumbnail.jpg"
+    img.convert("RGB").save(final_thumb_path, quality=95)
+    
+    print(f"      ✓ Thumbnail generated: {final_thumb_path}")
+    return str(final_thumb_path)

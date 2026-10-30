@@ -1,13 +1,6 @@
 """Voiceover generation: Gemini TTS primary, gTTS fallback, ASS subtitles."""
-import asyncio
-import base64
-import json
-import os
-import shutil
-import subprocess
-import urllib.request
+import asyncio, base64, json, os, shutil, subprocess, urllib.request
 from pathlib import Path
-
 from gtts import gTTS
 import stable_whisper
 from modules.subtitles import build_ass
@@ -108,7 +101,6 @@ def _gtts_tts(text, language, output_path):
     return os.path.exists(output_path) and os.path.getsize(output_path) > 1000
 
 def _estimate_timestamps(text):
-    """Fallback method: Estimate word timestamps based on average speaking speed."""
     words = text.split()
     wps = 2.5
     duration = 1.0 / wps
@@ -136,12 +128,10 @@ def generate_voiceover(full_script, language="English"):
     
     if not ok: raise RuntimeError("All TTS engines failed.")
 
-    # --- FORCED ALIGNMENT FOR SUBTITLES ---
     print(f"   Aligning audio and text for perfect captions...")
     try:
-        # Load the Whisper model (base is fast and accurate enough for captions)
+        # UPGRADED TO 'small' MODEL for Hindi/Nepali accuracy
         model = stable_whisper.load_model('small')
-        # Force align the original script to the generated audio
         result = model.align(str(audio_path), full_script, language=LANG_CODES.get(language, "en"))
         
         word_timestamps = []

@@ -41,7 +41,7 @@ def _call_gemini(prompt: str) -> dict | None:
     return None
 
 def _fallback(brief: dict, minutes: int) -> dict:
-    return {"topic": brief.get("topic", "topic"), "title": brief.get("topic", "topic"), "full_script": "Fallback", "description": "Fallback", "tags": [], "timeline": [{"scene_id": "SCENE_001", "start_time": "00:00", "end_time": "00:10", "narration": "Fallback", "visual_type": "AI_IMAGE", "prompt_or_query": "abstract", "source": "Cloudflare", "loop_behavior": None, "motion": "zoom_in"}]}
+    return {"topic": brief.get("topic", "topic"), "title": brief.get("topic", "topic"), "full_script": "Fallback", "description": "Fallback", "tags": [], "thumbnail_prompt": "abstract", "thumbnail_header": "WAIT WHAT?", "thumbnail_subheader": "You won't believe this...", "timeline": [{"scene_id": "SCENE_001", "start_time": "00:00", "end_time": "00:10", "narration": "Fallback", "visual_type": "AI_IMAGE", "prompt_or_query": "abstract", "source": "Cloudflare", "loop_behavior": None, "motion": "zoom_in"}]}
 
 def write_script(brief: dict, minutes: int = 5, language: str = "English") -> dict:
     minutes = max(1, int(minutes))
@@ -63,6 +63,9 @@ You MUST output ONLY valid JSON with this exact structure:
   "full_script": "The complete word-for-word narration in {language}.",
   "description": "YouTube description in {language}",
   "tags": ["tag1", "tag2"],
+  "thumbnail_prompt": "A highly detailed, cinematic, dramatic image prompt in English describing the main subject (e.g., 'A glowing black hole in deep space')",
+  "thumbnail_header": "SHORT PUNCHY QUESTION IN {language}? (2-4 words MAX)",
+  "thumbnail_subheader": "A short, clickbaity, curiosity-inducing statement in {language} (e.g., 'You will die in a minute')",
   "timeline": [
     {{
       "scene_id": "SCENE_001", "start_time": "00:00", "end_time": "00:06", "narration": "Exact words spoken during this scene in {language}", "visual_type": "AI_IMAGE", "prompt_or_query": "highly detailed cinematic image of...", "source": "Cloudflare", "loop_behavior": null, "motion": "zoom_in"
@@ -77,6 +80,8 @@ CRITICAL RULES:
 4. For ALL 32 AI_IMAGE scenes, you MUST alternate "motion": "zoom_in" and "motion": "zoom_out".
 5. Use "visual_type": "STOCK_VIDEO" for the remaining 18 scenes. Set source to "Pexels" or "Pixabay", and "motion": "none".
 6. visual_type MUST be one of: STOCK_VIDEO, AI_IMAGE.
+7. "thumbnail_header" MUST be ALL CAPS, 2-4 words, and end with a question mark.
+8. "thumbnail_subheader" MUST be a short, enticing statement.
 """
 
     result = _call_gemini(prompt) or _call_groq(prompt)

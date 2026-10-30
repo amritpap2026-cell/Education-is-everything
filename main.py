@@ -6,7 +6,7 @@ load_dotenv()
 from agents.researcher import research
 from agents.scriptwriter import write_script
 from modules.tts import generate_voiceover
-from modules.assets import fetch_asset_for_scene
+from modules.assets import fetch_asset_for_scene, generate_custom_thumbnail
 from modules.renderer import render_final_video
 from modules.uploader import upload
 
@@ -28,12 +28,13 @@ def main():
     
     print("\n2. Writing script and generating timeline...")
     package = write_script(dossier, args.minutes, args.language)
+    
+    if package.get("full_script") == "Fallback" or not package.get("timeline"):
+        print("\nCRITICAL ERROR: LLM failed to generate a real script. Aborting upload.")
+        sys.exit(1)
+        
     timeline = package.get("timeline", [])
     full_script = package.get("full_script", "")
-    
-    if not timeline:
-        print("ERROR: No timeline generated.")
-        sys.exit(1)
 
     Path("output").mkdir(exist_ok=True)
     with open("output/package.json", "w", encoding="utf-8") as f:
@@ -46,6 +47,24 @@ def main():
     for scene in timeline:
         asset_path = fetch_asset_for_scene(scene)
         scene["downloaded_asset"] = asset_path
+
+    successes = sum(1 for s in timeline if s.get("downloaded_asset"))
+    print(f"\n   Assets downloaded: {successes}/{len(timeline)}")
+
+    if successes == 0:
+        print("\nCRITICAL ERROR: No assets downloaded. Check API keys. Aborting upload.")
+        sys.exit(1)
+
+    # --- Generate Thumbnail ---
+    thumbnail_path = None
+    if package.get("thumbnail_prompt"):
+        print("\n   Generating Thumbnail...")
+        thumbnail_path = generate_custom_thumbnail(
+            prompt=package.get("thumbnail_prompt", "cinematic background"),
+            header_text=package.get("thumbnail_header", "WAIT WHAT?"),
+            subheader_text=package.get("thumbnail_subheader", "You won't believe this..."),
+            language=args.language
+        )
 
     print("\n5. Rendering final video...")
     output_video = "output/final_video.mp4"
@@ -64,6 +83,7 @@ def main():
             tags=package.get("tags", []),
             language=args.language,
             privacy=args.privacy if args.privacy != "private" else None,
+            thumbnail=thumbnail_path,
         )
         print(f"\n=== SUCCESS! {result['url']} ===")
     except Exception as e:
