@@ -140,7 +140,7 @@ def generate_voiceover(full_script, language="English"):
     print(f"   Aligning audio and text for perfect captions...")
     try:
         # Load the Whisper model (base is fast and accurate enough for captions)
-        model = stable_whisper.load_model('base')
+        model = stable_whisper.load_model('small')
         # Force align the original script to the generated audio
         result = model.align(str(audio_path), full_script, language=LANG_CODES.get(language, "en"))
         
