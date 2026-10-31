@@ -1,5 +1,3 @@
-cat > modules/tts.py << 'EOF'
-"""Voiceover generation: Gemini TTS primary, gTTS fallback, ASS subtitles."""
 import asyncio, base64, json, os, shutil, subprocess, urllib.request
 from pathlib import Path
 from gtts import gTTS
