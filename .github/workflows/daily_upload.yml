@@ -24,6 +24,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg fonts-noto
+          
+          # Download and install Mukta font for Hindi/Nepali
+          mkdir -p ~/.local/share/fonts
+          wget -q https://github.com/google/fonts/raw/main/ofl/mukta/Mukta-Bold.ttf -O ~/.local/share/fonts/Mukta-Bold.ttf
+          fc-cache -f -v
 
       - name: Install Python Dependencies
         run: |
