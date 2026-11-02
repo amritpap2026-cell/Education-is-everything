@@ -50,15 +50,27 @@ jobs:
         run: python queue_generator.py
 
       - name: Run Scheduler
-        run: python scheduler.py
+        run: 
+          python scheduler.py
 
-      - name: Commit and Push Queue Update
+            - name: Commit and Push Queue Update
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add topics_queue.json
-          git commit -m "Mark video as done [skip ci]" || echo "No changes to commit"
           
-          # Pull latest remote changes with rebase to prevent non-fast-forward rejection
-          git pull --rebase origin main || echo "Rebase had conflicts, continuing..."
-          git push
+          # 1. Only proceed if there are actually changes to commit
+          if git diff --cached --quiet; then
+            echo "No changes to queue. Skipping commit and push."
+            exit 0
+          fi
+          
+          # 2. Commit the changes
+          git commit -m "Mark video as done [skip ci]"
+          
+          # 3. Retry loop to handle concurrent pushes
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            echo "Push failed (attempt $i). Retrying..."
+            sleep 5
+          done
