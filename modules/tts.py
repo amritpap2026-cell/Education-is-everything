@@ -129,12 +129,11 @@ def generate_voiceover(full_script, language="English"):
     if not ok: raise RuntimeError("All TTS engines failed.")
 
     print(f"   Aligning audio and text for perfect captions...")
+    word_timestamps = []
     try:
-        # UPGRADED TO 'small' MODEL for Hindi/Nepali accuracy
         model = stable_whisper.load_model('small')
         result = model.align(str(audio_path), full_script, language=LANG_CODES.get(language, "en"))
         
-        word_timestamps = []
         for segment in result.segments:
             for word in segment.words:
                 word_timestamps.append({
@@ -145,6 +144,11 @@ def generate_voiceover(full_script, language="English"):
         print(f"   ✅ Successfully aligned {len(word_timestamps)} words.")
     except Exception as e:
         print(f"   ⚠️ Alignment failed ({str(e)[:50]}). Using estimated timestamps as fallback.")
+
+    # BULLETPROOF CHECK
+    expected_words = len(full_script.split())
+    if len(word_timestamps) < (expected_words * 0.5):
+        print(f"   ⚠️ Alignment unreliable ({len(word_timestamps)}/{expected_words} words). Forcing estimated timestamps.")
         word_timestamps = _estimate_timestamps(full_script)
 
     print(f"   Building ASS subtitles...")
