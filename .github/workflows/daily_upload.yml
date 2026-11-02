@@ -58,4 +58,7 @@ jobs:
           git config --global user.email 'action@github.com'
           git add topics_queue.json
           git commit -m "Mark video as done [skip ci]" || echo "No changes to commit"
+          
+          # Pull latest remote changes with rebase to prevent non-fast-forward rejection
+          git pull --rebase origin main || echo "Rebase had conflicts, continuing..."
           git push
