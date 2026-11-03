@@ -145,7 +145,6 @@ def generate_voiceover(full_script, language="English"):
     except Exception as e:
         print(f"   ⚠️ Alignment failed ({str(e)[:50]}). Using estimated timestamps as fallback.")
 
-    # BULLETPROOF CHECK
     expected_words = len(full_script.split())
     if len(word_timestamps) < (expected_words * 0.5):
         print(f"   ⚠️ Alignment unreliable ({len(word_timestamps)}/{expected_words} words). Forcing estimated timestamps.")
