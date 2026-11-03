@@ -146,8 +146,8 @@ def generate_voiceover(full_script, language="English"):
         print(f"   ⚠️ Alignment failed ({str(e)[:50]}). Using estimated timestamps as fallback.")
 
     expected_words = len(full_script.split())
-    if len(word_timestamps) < (expected_words * 0.5):
-        print(f"   ⚠️ Alignment unreliable ({len(word_timestamps)}/{expected_words} words). Forcing estimated timestamps.")
+    if len(word_timestamps) < (expected_words * 0.7):
+        print(f"   ⚠️ Alignment failed for too many words ({len(word_timestamps)}/{expected_words}). Forcing estimated timestamps.")
         word_timestamps = _estimate_timestamps(full_script)
 
     print(f"   Building ASS subtitles...")

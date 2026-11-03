@@ -1,4 +1,4 @@
-"""Single-channel YouTube uploader with playlist routing."""
+"""Single-channel YouTube uploader with playlist routing and thumbnail."""
 import json, os
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
@@ -66,6 +66,19 @@ def upload(video_path, title, description, tags, language="English", privacy=Non
     url = f"https://www.youtube.com/watch?v={video_id}"
     print(f"   Uploaded: {url}")
 
+    if thumbnail and Path(thumbnail).exists():
+        try:
+            print(f"   Uploading custom thumbnail...")
+            youtube.thumbnails().set(
+                videoId=video_id,
+                media_body=MediaFileUpload(thumbnail, mimetype="image/jpeg")
+            ).execute()
+            print(f"   ✓ Thumbnail applied successfully!")
+        except Exception as e:
+            print(f"   ❌ THUMBNAIL FAILED: {e}")
+            if "forbidden" in str(e).lower() or "unverified" in str(e).lower():
+                print("   ⚠️ HINT: Your YouTube account might not be verified for custom thumbnails.")
+    
     playlist_id = cfg.get("playlist_id", "").strip()
     if playlist_id and not playlist_id.startswith("PLpaste"):
         try:
