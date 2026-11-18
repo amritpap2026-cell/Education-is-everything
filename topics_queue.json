@@ -347,7 +347,8 @@
     "topic": "सोलार प्यानलले बिजुली कसरी उत्पादन गर्छ",
     "minutes": 5,
     "language": "Nepali",
-    "done": false
+    "done": true,
+    "done_at": "2026-11-18T01:53:49.426698"
   },
   {
     "topic": "The story of the Great Wall of China",
