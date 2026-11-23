@@ -417,7 +417,8 @@
     "topic": "How the stock market works",
     "minutes": 5,
     "language": "English",
-    "done": false
+    "done": true,
+    "done_at": "2026-11-23T00:32:19.364189"
   },
   {
     "topic": "शेयर बाजार कैसे काम करता है",
