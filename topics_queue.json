@@ -431,7 +431,8 @@
     "topic": "सेयर बजार कसरी काम गर्छ",
     "minutes": 5,
     "language": "Nepali",
-    "done": false
+    "done": true,
+    "done_at": "2026-11-24T04:29:56.671842"
   },
   {
     "topic": "The history of the printing press",
